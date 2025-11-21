@@ -3,32 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scary Bot</title>
+    <meta name="description" content="Haunted Graveyard - A spooky grave collecting game that will scare you!">
+    <title>Haunted Graveyard - Dare to Enter?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Scary Bot</h1>
-        <p>Find the graves... if you dare.</p>
+    <!-- Jump Scare Overlay (hidden by default) -->
+    <div id="jumpScareOverlay" class="jump-scare-overlay hidden" role="alert" aria-live="assertive">
+        <div class="jump-scare-content">
+            <div class="skull-icon">💀</div>
+            <p class="jump-scare-text">BOO!</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="header-left">
+                <span class="icon-ghost" aria-hidden="true">👻</span>
+                <h1 class="app-title">Haunted Graveyard</h1>
+                <span class="icon-moon" aria-hidden="true">🌙</span>
+            </div>
+            <button id="soundToggle" class="sound-toggle" aria-label="Toggle sound">
+                <span id="soundIcon">🔊</span>
+            </button>
+        </div>
     </header>
 
-    <main>
-        <button id="toggleData">Switch to Demo Data</button>
-
-        <div id="graveList" class="grave-list">
-            <h2>Graveyard</h2>
-            <ul></ul>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="welcome-content">
+                <div class="welcome-skull">💀</div>
+                <h2 class="welcome-title">Enter If You Dare...</h2>
+                <p class="welcome-text">
+                    Explore the haunted graveyard and collect all 13 cursed tombstones.
+                    <br>
+                    But beware... you're not alone in the darkness.
+                </p>
+                <button id="startGameBtn" class="btn-start">Enter the Graveyard</button>
+            </div>
         </div>
 
-        <div id="statusMessage" class="status-message"></div>
+        <!-- Game Screen (hidden initially) -->
+        <div id="gameScreen" class="game-screen hidden">
+            <!-- Progress Section -->
+            <section class="progress-section" aria-label="Game progress">
+                <div class="progress-header">
+                    <span class="progress-label">Graves Collected</span>
+                    <span id="progressCount" class="progress-count">0 / 13</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </section>
 
-        <button id="refreshButton" style="display:none;">Refresh Grave List</button>
+            <!-- Status Message -->
+            <div id="statusMessage" class="status-message hidden" role="status" aria-live="polite"></div>
+
+            <!-- Search Area -->
+            <section class="search-area">
+                <div class="search-icon">👻</div>
+                <p id="unlockedCount" class="search-text">1 grave has been revealed by the mist...</p>
+                <button id="searchBtn" class="btn-search">Search for Graves</button>
+            </section>
+
+            <!-- Current Grave Display -->
+            <div id="currentGraveCard" class="grave-card hidden">
+                <div class="grave-skull">💀</div>
+                <h3 id="graveName" class="grave-name"></h3>
+                <p id="graveEpitaph" class="grave-epitaph"></p>
+                <p id="graveYear" class="grave-year"></p>
+                <button id="collectBtn" class="btn-collect">Collect This Grave</button>
+            </div>
+
+            <!-- Collected Graves Section -->
+            <section class="collection-section">
+                <h3 class="collection-title">Your Collection</h3>
+                <div id="collectedList" class="collected-list">
+                    <p class="empty-state">No graves collected yet...</p>
+                </div>
+            </section>
+
+            <!-- Reset Button -->
+            <div class="reset-section">
+                <button id="resetBtn" class="btn-reset">Reset Progress</button>
+            </div>
+        </div>
+
+        <!-- Win Screen Overlay (hidden by default) -->
+        <div id="winScreen" class="win-screen hidden">
+            <div class="win-content">
+                <div class="win-skull">💀</div>
+                <h2 class="win-title">You've Collected Them All!</h2>
+                <p class="win-text">
+                    The spirits are pleased... for now. But they'll be waiting for you to return...
+                </p>
+                <button id="winResetBtn" class="btn-win-reset">Start Over</button>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>© 2025 Scary Bot</p>
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>👻 Haunted Graveyard Collector • A spooky grave-hunting experience</p>
+            <p class="footer-subtext">New graves appear every few seconds... if you survive long enough.</p>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
